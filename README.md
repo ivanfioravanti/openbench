@@ -77,6 +77,7 @@ openbench supports 30+ model providers through Inspect AI. Set the appropriate A
 | **Hyperbolic**        | `HYPERBOLIC_API_KEY`   | `hyperbolic/model-name`          |
 | **Lambda**            | `LAMBDA_API_KEY`       | `lambda/model-name`              |
 | **MiniMax**           | `MINIMAX_API_KEY`      | `minimax/model-name`             |
+| **MLX**               | None (local)           | `mlx/model-name`                 |
 | **Mistral**           | `MISTRAL_API_KEY`      | `mistral/model-name`             |
 | **Moonshot**          | `MOONSHOT_API_KEY`     | `moonshot/model-name`            |
 | **Nebius**            | `NEBIUS_API_KEY`       | `nebius/model-name`              |
@@ -94,6 +95,9 @@ openbench supports 30+ model providers through Inspect AI. Set the appropriate A
 | **Vercel AI Gateway** | `AI_GATEWAY_API_KEY`   | `vercel/creator-name/model-name` |
 | **W&B Inference**     | `WANDB_API_KEY`        | `wandb/model-name`               |
 | **vLLM**              | None (local)           | `vllm/model-name`                |
+
+For local MLX servers, the `mlx` provider defaults to `http://localhost:8080/v1`.
+Set `MLX_BASE_URL` to use a different endpoint.
 
 ## Available Benchmarks
 

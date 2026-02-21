@@ -23,6 +23,7 @@ To access any major model, set the appropriate API key environment variable:
 | **Hyperbolic**        | `HYPERBOLIC_API_KEY`   | `hyperbolic/model-name`          |
 | **Lambda**            | `LAMBDA_API_KEY`       | `lambda/model-name`              |
 | **MiniMax**           | `MINIMAX_API_KEY`      | `minimax/model-name`             |
+| **MLX**               | None (local)           | `mlx/model-name`                 |
 | **Mistral**           | `MISTRAL_API_KEY`      | `mistral/model-name`             |
 | **Moonshot**          | `MOONSHOT_API_KEY`     | `moonshot/model-name`            |
 | **Nebius**            | `NEBIUS_API_KEY`       | `nebius/model-name`              |
@@ -137,4 +138,18 @@ bench eval mmlu
     --max-connections 100
     -M only=groq,together 
     -M sort=price 
+```
+
+### MLX
+Use `mlx` with a local `mlx_lm.server` OpenAI-compatible endpoint:
+
+```bash
+bench eval mmlu --model mlx/<model-name> --limit 10
+```
+
+The MLX provider defaults to `http://localhost:8080/v1`.
+To use another endpoint, set:
+
+```bash
+export MLX_BASE_URL=http://localhost:9000/v1
 ```
