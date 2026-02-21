@@ -195,6 +195,14 @@ def siliconflow() -> Type[ModelAPI]:
     return SiliconFlowAPI
 
 
+@modelapi(name="mlx")
+def mlx() -> Type[ModelAPI]:
+    """Register MLX provider."""
+    from .model._providers.mlx import MLXAPI
+
+    return MLXAPI
+
+
 def _override_builtin_groq_provider():
     """Replace Inspect AI's built-in groq provider with enhanced openbench version."""
     from inspect_ai._util.registry import _registry
