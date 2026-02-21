@@ -38,12 +38,13 @@ class MLXAPI(OpenAICompatibleAPI):
         base_url = base_url or os.environ.get("MLX_BASE_URL")
         if not base_url:
             base_url = (
-                f"http://localhost:{port}/v1" if port is not None else self.DEFAULT_BASE_URL
+                f"http://localhost:{port}/v1"
+                if port is not None
+                else self.DEFAULT_BASE_URL
             )
 
         api_key = (
             api_key
-            or os.environ.get("MLX_API_KEY")
             or os.environ.get("OPENAI_API_KEY")
             or self.DEFAULT_API_KEY
         )
