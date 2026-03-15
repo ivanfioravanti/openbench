@@ -78,6 +78,7 @@ openbench supports 30+ model providers through Inspect AI. Set the appropriate A
 | **Lambda**            | `LAMBDA_API_KEY`       | `lambda/model-name`              |
 | **MiniMax**           | `MINIMAX_API_KEY`      | `minimax/model-name`             |
 | **MLX**               | None (local)           | `mlx/model-name`                 |
+| **MLX Local**         | None (local)           | `mlxlocal/model-name`            |
 | **Mistral**           | `MISTRAL_API_KEY`      | `mistral/model-name`             |
 | **Moonshot**          | `MOONSHOT_API_KEY`     | `moonshot/model-name`            |
 | **Nebius**            | `NEBIUS_API_KEY`       | `nebius/model-name`              |
@@ -98,6 +99,10 @@ openbench supports 30+ model providers through Inspect AI. Set the appropriate A
 
 For local MLX servers, the `mlx` provider defaults to `http://localhost:8080/v1`.
 Set `MLX_BASE_URL` to use a different endpoint.
+
+For in-process MLX inference on Apple Silicon, use `mlxlocal/<model-name>`
+(for example `mlxlocal/mlx-community/Llama-3.2-3B-Instruct-4bit`).
+The `mlxlocal` provider requires `mlx-lm` to be installed.
 
 ## Available Benchmarks
 

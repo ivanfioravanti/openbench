@@ -203,6 +203,14 @@ def mlx() -> Type[ModelAPI]:
     return MLXAPI
 
 
+@modelapi(name="mlxlocal")
+def mlxlocal() -> Type[ModelAPI]:
+    """Register MLX Local (in-process) provider — no server required."""
+    from .model._providers.mlxlocal import MLXLocalAPI
+
+    return MLXLocalAPI
+
+
 def _override_builtin_groq_provider():
     """Replace Inspect AI's built-in groq provider with enhanced openbench version."""
     from inspect_ai._util.registry import _registry

@@ -183,3 +183,29 @@ def patch_display_results():
     except (ImportError, AttributeError):
         # If inspect_ai is not installed or the module structure changed, silently continue
         pass
+
+    # Patch the Textual TaskDetail widget to use adaptive grid columns
+    # instead of a hardcoded 3-column layout that squeezes scorer boxes
+    # on narrow terminals.
+    try:
+        from inspect_ai._display.textual.widgets import task_detail as td_mod
+
+        _original_refresh_grid = td_mod.TaskDetail.refresh_grid
+
+        def _adaptive_refresh_grid(self):  # type: ignore
+            """Adjust grid columns to the actual number of scorer groups (max 3)."""
+            num_groups = len(self.by_reducer)
+            if num_groups == 0:
+                num_groups = 1
+            cols = min(num_groups, 3)
+
+            fr = " ".join(["1fr"] * cols)
+            self.grid.styles.grid_size_columns = cols
+            self.grid.styles.grid_columns = fr
+
+            _original_refresh_grid(self)
+
+        td_mod.TaskDetail.refresh_grid = _adaptive_refresh_grid
+
+    except (ImportError, AttributeError):
+        pass
